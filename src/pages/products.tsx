@@ -1,8 +1,12 @@
 import { GetStaticProps } from "next"
 import Image from "next/image"
+import { Box, Heading } from "@chakra-ui/react"
+
 import { stripe } from "../libs/stripe"
 import { api } from "../libs/api"
 import { getStripeJs } from "../libs/stripe-js"
+
+import { EventsBar } from "../components/EventsBar"
 
 interface IProduct {
   id: string
@@ -35,8 +39,11 @@ export default function Products({ products }: HomeProps) {
   }
 
   return (
-    <div>
-      <h1>Cubestore</h1>
+    <Box px="2rem">
+      <Heading as="h2" fontSize="xl" mt="1rem">
+        Events
+      </Heading>
+      <EventsBar mt="0.5rem" />
 
       {products.map((product) => (
         <div key={product.id}>
@@ -51,7 +58,7 @@ export default function Products({ products }: HomeProps) {
           <button onClick={() => handleBuyProduct(product)}>Buy</button>
         </div>
       ))}
-    </div>
+    </Box>
   )
 }
 

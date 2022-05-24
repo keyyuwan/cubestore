@@ -1,5 +1,6 @@
 import { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
+import "@cubing/icons"
 
 import { Layout } from "../components/Layout"
 

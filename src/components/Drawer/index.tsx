@@ -27,7 +27,7 @@ export function Drawer({ isOpen, onClose }: DrawerProps) {
   return (
     <ChakraDrawer isOpen={isOpen} placement="left" onClose={onClose}>
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent bg="gray.200">
         <DrawerCloseButton mt="3" />
         <DrawerHeader>
           <Heading as="h1" fontSize="xl" cursor="pointer">
