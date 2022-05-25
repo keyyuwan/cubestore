@@ -1,19 +1,19 @@
 import { GetStaticProps } from "next"
-import Image from "next/image"
-import { Box, Heading } from "@chakra-ui/react"
+import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
 
 import { stripe } from "../libs/stripe"
 import { api } from "../libs/api"
 import { getStripeJs } from "../libs/stripe-js"
 
 import { EventsBar } from "../components/EventsBar"
+import { Product } from "../components/Product"
 
 interface IProduct {
   id: string
   name: string
-  description: string
   images: string[]
   priceId: string
+  event: string
 }
 
 interface HomeProps {
@@ -21,22 +21,22 @@ interface HomeProps {
 }
 
 export default function Products({ products }: HomeProps) {
-  async function handleBuyProduct(product: IProduct) {
-    try {
-      const { data } = await api.post("/checkout", {
-        productName: product.name,
-        priceId: product.priceId,
-      })
+  // async function handleBuyProduct(product: IProduct) {
+  //   try {
+  //     const { data } = await api.post("/checkout", {
+  //       productName: product.name,
+  //       priceId: product.priceId,
+  //     })
 
-      const sessionId = data.sessionId
+  //     const sessionId = data.sessionId
 
-      const stripe = await getStripeJs()
+  //     const stripe = await getStripeJs()
 
-      await stripe.redirectToCheckout({ sessionId })
-    } catch (err) {
-      alert(err.message)
-    }
-  }
+  //     await stripe.redirectToCheckout({ sessionId })
+  //   } catch (err) {
+  //     alert(err.message)
+  //   }
+  // }
 
   return (
     <Box px="2rem">
@@ -45,7 +45,20 @@ export default function Products({ products }: HomeProps) {
       </Heading>
       <EventsBar mt="0.5rem" />
 
-      {products.map((product) => (
+      <SimpleGrid
+        spacing="2rem"
+        columns={[1, 2, 3]}
+        mt="4rem"
+        pb="2rem"
+        alignItems="center"
+        justifyContent="center"
+      >
+        {products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
+      </SimpleGrid>
+
+      {/* {products.map((product) => (
         <div key={product.id}>
           <h2>{product.name}</h2>
           <Image
@@ -57,7 +70,7 @@ export default function Products({ products }: HomeProps) {
           <p>{product.description}</p>
           <button onClick={() => handleBuyProduct(product)}>Buy</button>
         </div>
-      ))}
+      ))} */}
     </Box>
   )
 }
@@ -68,9 +81,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const productsFormatted = products.data.map((product) => ({
     id: product.id,
     name: product.name,
-    description: product.description,
     images: product.images,
     priceId: product.default_price,
+    event: product.metadata.event,
   }))
 
   return {
