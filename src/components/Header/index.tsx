@@ -43,7 +43,7 @@ export function Header() {
       align="center"
       position="sticky"
       top={0}
-      bg={isHeaderDarker && "gray.300"}
+      bg={isHeaderDarker && "gray.800"}
       zIndex={10}
     >
       {!isWideVersion && (
@@ -61,8 +61,8 @@ export function Header() {
       )}
 
       <Flex w="100%" align="center" justify="space-between">
-        <Logo />
-        <User showProfileData={isWideVersion} />
+        <Logo isHeaderDarker={isHeaderDarker} />
+        <User showProfileData={isWideVersion} isHeaderDarker={isHeaderDarker} />
       </Flex>
     </Flex>
   )
