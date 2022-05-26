@@ -14,6 +14,7 @@ interface IProduct {
   images: string[]
   priceId: string
   event: string
+  price: string
 }
 
 interface HomeProps {
@@ -84,6 +85,10 @@ export const getStaticProps: GetStaticProps = async () => {
     images: product.images,
     priceId: product.default_price,
     event: product.metadata.event,
+    price: new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(Number(product.metadata.price)),
   }))
 
   return {

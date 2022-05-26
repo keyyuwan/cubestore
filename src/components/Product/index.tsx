@@ -6,6 +6,7 @@ interface ProductProps {
     images: string[]
     name: string
     event: string
+    price: string
   }
 }
 
@@ -50,7 +51,7 @@ export function Product({ product }: ProductProps) {
           <Text fontWeight="thin" color="gray.500">
             {product.event}
           </Text>
-          <Text fontWeight="bold">U$9,90</Text>
+          <Text fontWeight="bold">{product.price}</Text>
         </Flex>
       </Box>
     </Flex>
