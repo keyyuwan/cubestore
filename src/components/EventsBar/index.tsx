@@ -1,10 +1,17 @@
 import { Flex, FlexProps } from "@chakra-ui/react"
-import { EVENTS } from "../../utils/events"
+import { EVENTS, EventsName } from "../../utils/events"
 import { EventCard } from "./EventCard"
 
-interface EventsBarProps extends FlexProps {}
+interface EventsBarProps extends FlexProps {
+  eventSelected: EventsName
+  handleSelectEvent: (eventName: EventsName) => void
+}
 
-export function EventsBar({ ...rest }: EventsBarProps) {
+export function EventsBar({
+  eventSelected,
+  handleSelectEvent,
+  ...rest
+}: EventsBarProps) {
   return (
     <Flex
       p="0.5rem"
@@ -17,8 +24,9 @@ export function EventsBar({ ...rest }: EventsBarProps) {
       {EVENTS.map((event) => (
         <EventCard
           key={event.id}
-          className={event.className}
-          name={event.name}
+          event={event}
+          selected={eventSelected === event.name}
+          handleSelectEvent={handleSelectEvent}
         />
       ))}
     </Flex>

@@ -1,11 +1,17 @@
 import { Box, Flex, Text } from "@chakra-ui/react"
+import { Event, EventsName } from "../../utils/events"
 
 interface EventCardProps {
-  className: string
-  name: string
+  event: Event
+  selected: boolean
+  handleSelectEvent: (eventName: EventsName) => void
 }
 
-export function EventCard({ className, name }: EventCardProps) {
+export function EventCard({
+  event,
+  selected,
+  handleSelectEvent,
+}: EventCardProps) {
   return (
     <Flex
       as="button"
@@ -20,9 +26,12 @@ export function EventCard({ className, name }: EventCardProps) {
       boxShadow="md"
       _hover={{ transform: "scale(1.1)" }}
       transition="0.2s"
+      border={selected && "1.5px solid"}
+      borderColor={selected && "gray.800"}
+      onClick={() => handleSelectEvent(event.name)}
     >
-      <Box as="span" className={className} fontSize="2xl" />
-      <Text fontWeight="medium">{name}</Text>
+      <Box as="span" className={event.className} fontSize="2xl" />
+      <Text fontWeight="medium">{event.name}</Text>
     </Flex>
   )
 }

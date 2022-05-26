@@ -1,10 +1,23 @@
-interface Event {
+export type EventsName =
+  | "All"
+  | "2x2x2"
+  | "3x3x3"
+  | "Skewb"
+  | "Pyraminx"
+  | "Megaminx"
+
+export interface Event {
   id: string
-  name: string
+  name: EventsName
   className: string
 }
 
 export const EVENTS: Event[] = [
+  {
+    id: "0",
+    name: "All",
+    className: "cubing-icon event-mmagic",
+  },
   {
     id: "1",
     name: "2x2x2",

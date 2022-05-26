@@ -1,9 +1,12 @@
+import { useState } from "react"
 import { GetStaticProps } from "next"
 import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
 
 import { stripe } from "../libs/stripe"
 import { api } from "../libs/api"
 import { getStripeJs } from "../libs/stripe-js"
+
+import { EventsName } from "../utils/events"
 
 import { EventsBar } from "../components/EventsBar"
 import { Product } from "../components/Product"
@@ -22,6 +25,20 @@ interface HomeProps {
 }
 
 export default function Products({ products }: HomeProps) {
+  const [eventSelected, setEventSelected] = useState<EventsName>("All")
+
+  function handleSelectEvent(eventName: EventsName) {
+    setEventSelected(eventName)
+  }
+
+  const filteredProducts = products.filter((product) => {
+    if (eventSelected === "All") {
+      return products
+    }
+
+    return product.event === eventSelected
+  })
+
   // async function handleBuyProduct(product: IProduct) {
   //   try {
   //     const { data } = await api.post("/checkout", {
@@ -44,7 +61,11 @@ export default function Products({ products }: HomeProps) {
       <Heading as="h2" fontSize="xl" mt="1rem">
         Events
       </Heading>
-      <EventsBar mt="0.5rem" />
+      <EventsBar
+        eventSelected={eventSelected}
+        handleSelectEvent={handleSelectEvent}
+        mt="0.5rem"
+      />
 
       <SimpleGrid
         spacing="2rem"
@@ -54,7 +75,7 @@ export default function Products({ products }: HomeProps) {
         alignItems="center"
         justifyContent="center"
       >
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </SimpleGrid>
