@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
+import { useSession } from "next-auth/react"
 import {
   Flex,
   IconButton,
   useBreakpointValue,
   useDisclosure,
+  useMediaQuery,
 } from "@chakra-ui/react"
 import { HamburgerIcon } from "@chakra-ui/icons"
 
@@ -12,12 +14,14 @@ import { Drawer } from "../Drawer"
 import { User } from "./User"
 
 export function Header() {
+  const { data: session } = useSession()
   const { isOpen, onClose, onOpen } = useDisclosure()
 
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   })
+  const [isLargerOrEqualThan414] = useMediaQuery("(min-width: 414px)")
 
   const [isHeaderDarker, setIsHeaderDarker] = useState(false)
 
@@ -57,13 +61,20 @@ export function Header() {
             color={isHeaderDarker && "#f0f2f5"}
             onClick={onOpen}
           />
-          <Drawer isOpen={isOpen} onClose={onClose} />
+          <Drawer isOpen={isOpen} onClose={onClose} session={session} />
         </>
       )}
 
       <Flex w="100%" align="center" justify="space-between">
         <Logo isHeaderDarker={isHeaderDarker} />
-        <User showProfileData={isWideVersion} isHeaderDarker={isHeaderDarker} />
+
+        {isLargerOrEqualThan414 && session ? (
+          <User
+            showProfileData={isWideVersion}
+            isHeaderDarker={isHeaderDarker}
+            session={session}
+          />
+        ) : null}
       </Flex>
     </Flex>
   )

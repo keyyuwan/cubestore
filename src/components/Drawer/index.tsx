@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useRouter } from "next/router"
+import { Session } from "next-auth"
 import {
   Drawer as ChakraDrawer,
   DrawerBody,
@@ -8,16 +9,27 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Heading,
+  Avatar,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import { FaCubes, FaHome } from "react-icons/fa"
 import { Item } from "./Item"
+import { SignInItem } from "./SignInItem"
 
 interface DrawerProps {
   isOpen: boolean
   onClose: () => void
+  session: Session
 }
 
-export function Drawer({ isOpen, onClose }: DrawerProps) {
+export function Drawer({ isOpen, onClose, session }: DrawerProps) {
+  const isMobileVersion = useBreakpointValue({
+    base: true,
+    md: false,
+    lg: false,
+    xl: false,
+  })
+
   const { asPath } = useRouter()
 
   useEffect(() => {
@@ -43,6 +55,27 @@ export function Drawer({ isOpen, onClose }: DrawerProps) {
             title="Products"
             mt="2rem"
           />
+          {isMobileVersion && (
+            <>
+              {session ? (
+                <Item
+                  href="#" // TODO: href="/profile"
+                  Icon={
+                    <Avatar
+                      name={session.user.name}
+                      src={session.user.image}
+                      w="2rem"
+                      h="2rem"
+                    />
+                  }
+                  title="Profile"
+                  mt="2rem"
+                />
+              ) : (
+                <SignInItem mt="2rem" />
+              )}
+            </>
+          )}
         </DrawerBody>
       </DrawerContent>
     </ChakraDrawer>
