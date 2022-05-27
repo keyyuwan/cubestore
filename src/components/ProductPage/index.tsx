@@ -45,7 +45,10 @@ export function ProductPage({ product }: ProductPageProps) {
           {product.description}
         </Text>
 
-        <PurchaseButton />
+        <PurchaseButton
+          productName={product.name}
+          productPriceId={product.priceId}
+        />
       </Flex>
     </Flex>
   )
