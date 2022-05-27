@@ -15,6 +15,7 @@ import {
 import { FaCubes, FaHome } from "react-icons/fa"
 import { Item } from "./Item"
 import { SignInItem } from "./SignInItem"
+import { SignOutItem } from "./SignOutItem"
 
 interface DrawerProps {
   isOpen: boolean
@@ -25,7 +26,7 @@ interface DrawerProps {
 export function Drawer({ isOpen, onClose, session }: DrawerProps) {
   const isMobileVersion = useBreakpointValue({
     base: true,
-    md: false,
+    md: true,
     lg: false,
     xl: false,
   })
@@ -47,7 +48,7 @@ export function Drawer({ isOpen, onClose, session }: DrawerProps) {
           </Heading>
         </DrawerHeader>
 
-        <DrawerBody>
+        <DrawerBody as="nav">
           <Item href="/" Icon={<FaHome size={28} />} title="Home" mt="2rem" />
           <Item
             href="/products"
@@ -58,19 +59,22 @@ export function Drawer({ isOpen, onClose, session }: DrawerProps) {
           {isMobileVersion && (
             <>
               {session ? (
-                <Item
-                  href="#" // TODO: href="/profile"
-                  Icon={
-                    <Avatar
-                      name={session.user.name}
-                      src={session.user.image}
-                      w="2rem"
-                      h="2rem"
-                    />
-                  }
-                  title="Profile"
-                  mt="2rem"
-                />
+                <>
+                  <Item
+                    href="#" // TODO: href="/profile"
+                    Icon={
+                      <Avatar
+                        name={session.user.name}
+                        src={session.user.image}
+                        w="2rem"
+                        h="2rem"
+                      />
+                    }
+                    title="Profile"
+                    mt="2rem"
+                  />
+                  <SignOutItem mt="2rem" />
+                </>
               ) : (
                 <SignInItem mt="2rem" />
               )}

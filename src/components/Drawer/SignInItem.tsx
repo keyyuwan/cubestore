@@ -6,7 +6,7 @@ type SignInItemProps = FlexProps
 
 export function SignInItem({ ...rest }: SignInItemProps) {
   return (
-    <Flex align="center" {...rest} onClick={() => signIn()}>
+    <Flex align="center" {...rest} onClick={() => signIn("google")}>
       <FaGoogle size={28} />
       <Text ml="1rem" fontSize="lg" fontWeight="semibold">
         Sign in with Google

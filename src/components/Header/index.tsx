@@ -12,6 +12,7 @@ import { HamburgerIcon } from "@chakra-ui/icons"
 import { Logo } from "./Logo"
 import { Drawer } from "../Drawer"
 import { User } from "./User"
+import { SignInButton } from "./SignInButton"
 
 export function Header() {
   const { data: session } = useSession()
@@ -75,6 +76,8 @@ export function Header() {
             session={session}
           />
         ) : null}
+
+        {isWideVersion && !session && <SignInButton />}
       </Flex>
     </Flex>
   )
