@@ -32,7 +32,7 @@ export function Header() {
   function addFixedPositon() {
     const scrollTop = window.scrollY
 
-    scrollTop >= 80 ? setIsHeaderDarker(true) : setIsHeaderDarker(false)
+    scrollTop >= 30 ? setIsHeaderDarker(true) : setIsHeaderDarker(false)
   }
 
   return (
@@ -54,6 +54,7 @@ export function Header() {
             fontSize="lg"
             variant="unstyled"
             mr="1.5rem"
+            color={isHeaderDarker && "#f0f2f5"}
             onClick={onOpen}
           />
           <Drawer isOpen={isOpen} onClose={onClose} />
