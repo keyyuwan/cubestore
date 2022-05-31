@@ -14,7 +14,7 @@ export function ProductPage({ product }: ProductPageProps) {
     <Flex
       flexDir={["column", "column", "row"]}
       gap={[0, 0, "2rem"]}
-      align={["flex-start", "flex-start", "flex-end"]}
+      align={["flex-start", "flex-start", "center"]}
       mt="2rem"
     >
       <Image
