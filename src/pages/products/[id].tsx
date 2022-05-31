@@ -21,7 +21,7 @@ interface ProductProps {
 
 export default function Product({ product }: ProductProps) {
   return (
-    <Container py="1rem" maxW={1120}>
+    <Container pt="1rem" pb="2rem" maxW={1120}>
       <Breadcrumb productName={product.name} />
 
       <ProductPage product={product} />
