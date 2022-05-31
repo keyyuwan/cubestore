@@ -2,12 +2,16 @@ import { signIn } from "next-auth/react"
 import { Flex, Text } from "@chakra-ui/react"
 import { FaGoogle } from "react-icons/fa"
 
-export function SignInButton() {
+interface SignInButtonProps {
+  isHeaderDarker: boolean
+}
+
+export function SignInButton({ isHeaderDarker }: SignInButtonProps) {
   return (
     <Flex
       as="button"
-      bg="gray.800"
-      color="gray.50"
+      bg={isHeaderDarker ? "gray.50" : "gray.800"}
+      color={isHeaderDarker ? "gray.800" : "gray.50"}
       h="3rem"
       borderRadius="3rem"
       px="1.5rem"

@@ -81,7 +81,9 @@ export function Header() {
           </Flex>
         ) : null}
 
-        {isWideVersion && !session && <SignInButton />}
+        {isWideVersion && !session && (
+          <SignInButton isHeaderDarker={isHeaderDarker} />
+        )}
       </Flex>
     </Flex>
   )

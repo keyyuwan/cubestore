@@ -1,5 +1,6 @@
-import { Flex, Image, Text } from "@chakra-ui/react"
+import { Flex, Image, Text, useDisclosure } from "@chakra-ui/react"
 import { IProduct } from "../../pages/products/[id]"
+import { AuthModal } from "../AuthModal"
 import { PurchaseButton } from "./PurchaseButton"
 
 interface ProductPageProps {
@@ -7,6 +8,8 @@ interface ProductPageProps {
 }
 
 export function ProductPage({ product }: ProductPageProps) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <Flex
       flexDir={["column", "column", "row"]}
@@ -48,7 +51,10 @@ export function ProductPage({ product }: ProductPageProps) {
         <PurchaseButton
           productName={product.name}
           productPriceId={product.priceId}
+          onOpenAuthModal={onOpen}
         />
+
+        <AuthModal isOpen={isOpen} onClose={onClose} />
       </Flex>
     </Flex>
   )

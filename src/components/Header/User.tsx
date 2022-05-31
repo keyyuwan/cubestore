@@ -21,11 +21,7 @@ export function User({ showProfileData, isHeaderDarker, session }: UserProps) {
         </Box>
       )}
 
-      <Avatar
-        name={session.user.name}
-        src={session.user.image}
-        cursor="pointer"
-      />
+      <Avatar name={session.user.name} src={session.user.image} />
     </Flex>
   )
 }

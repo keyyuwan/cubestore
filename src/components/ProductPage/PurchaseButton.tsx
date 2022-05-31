@@ -1,18 +1,26 @@
 import { Button } from "@chakra-ui/react"
+import { useSession } from "next-auth/react"
 import { api } from "../../libs/api"
 import { getStripeJs } from "../../libs/stripe-js"
 
 interface PurchaseButtonProps {
   productName: string
   productPriceId: string
+  onOpenAuthModal: () => void
 }
 
 export function PurchaseButton({
   productName,
   productPriceId,
+  onOpenAuthModal,
 }: PurchaseButtonProps) {
+  const { data: session } = useSession()
+
   async function handlePurchaseProduct() {
-    // TODO: not let the authenticated user buy the product
+    if (!session) {
+      onOpenAuthModal()
+      return
+    }
 
     try {
       const response = await api.post("/checkout", {

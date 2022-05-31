@@ -61,7 +61,7 @@ export function Drawer({ isOpen, onClose, session }: DrawerProps) {
               {session ? (
                 <>
                   <Item
-                    href="#" // TODO: href="/profile"
+                    href="#"
                     Icon={
                       <Avatar
                         name={session.user.name}
@@ -70,7 +70,7 @@ export function Drawer({ isOpen, onClose, session }: DrawerProps) {
                         h="2rem"
                       />
                     }
-                    title="Profile"
+                    title={session.user.name}
                     mt="2rem"
                   />
                   <SignOutItem mt="2rem" />
