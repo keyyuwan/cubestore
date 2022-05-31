@@ -14,6 +14,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         mode: "payment",
         success_url: `http://localhost:3000/success?productName=${req.body["productName"]}`,
         cancel_url: "http://localhost:3000/canceled",
+        shipping_address_collection: {
+          allowed_countries: ["BR"],
+        },
       })
 
       return res.status(200).json({ sessionId: session.id })

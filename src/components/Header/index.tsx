@@ -13,6 +13,7 @@ import { Logo } from "./Logo"
 import { Drawer } from "../Drawer"
 import { User } from "./User"
 import { SignInButton } from "./SignInButton"
+import { SignOutButton } from "./SignOutButton"
 
 export function Header() {
   const { data: session } = useSession()
@@ -70,11 +71,14 @@ export function Header() {
         <Logo isHeaderDarker={isHeaderDarker} />
 
         {isLargerOrEqualThan414 && session ? (
-          <User
-            showProfileData={isWideVersion}
-            isHeaderDarker={isHeaderDarker}
-            session={session}
-          />
+          <Flex align="center" gap="2rem">
+            <User
+              showProfileData={isWideVersion}
+              isHeaderDarker={isHeaderDarker}
+              session={session}
+            />
+            <SignOutButton isWideVersion={isWideVersion} />
+          </Flex>
         ) : null}
 
         {isWideVersion && !session && <SignInButton />}

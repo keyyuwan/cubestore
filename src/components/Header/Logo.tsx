@@ -13,7 +13,7 @@ export function Logo({ isHeaderDarker }: LogoProps) {
         <FaCubes size={32} color={isHeaderDarker && "#f0f2f5"} />
         <Heading
           as="h1"
-          fontSize={["2xl", "3xl"]}
+          fontSize={["2xl", "2xl", "3xl"]}
           color={isHeaderDarker && "#f0f2f5"}
         >
           cube.store
