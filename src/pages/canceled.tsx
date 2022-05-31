@@ -1,19 +1,16 @@
 import { Flex, Text } from "@chakra-ui/react"
-import { useRouter } from "next/router"
-import { FaCheckCircle } from "react-icons/fa"
+import { FaSadTear } from "react-icons/fa"
 import { Container } from "../components/Container"
 import { BackToProductsPageButton } from "../components/BackToProductsPageButton"
 
-export default function Success() {
-  const { query, push } = useRouter()
-
+export default function Canceled() {
   return (
     <Container>
       <Flex h="80vh" flexDir="column" align="center" justify="center">
-        <FaCheckCircle size={100} color="green" />
+        <FaSadTear size={100} />
         <Text mt="2rem" textAlign="center" fontSize="xl">
-          <strong>Congratulations!</strong> <br /> You just bought a{" "}
-          {query.productName}
+          <strong>Sorry,</strong> <br /> an error occurred while purchasing your
+          product
         </Text>
         <BackToProductsPageButton mt="2rem" />
       </Flex>
