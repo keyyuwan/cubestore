@@ -10,7 +10,7 @@ export function Logo({ isHeaderDarker }: LogoProps) {
   return (
     <Link href="/">
       <Flex align="center" gap="1rem" cursor="pointer">
-        <FaCubes size={32} color={isHeaderDarker && "#f0f2f5"} />
+        <FaCubes size={32} color={isHeaderDarker ? "#f0f2f5" : undefined} />
         <Heading
           as="h1"
           fontSize={["2xl", "2xl", "3xl"]}
