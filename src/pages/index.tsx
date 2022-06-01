@@ -26,7 +26,7 @@ export default function LandingPage() {
               bgClip="text"
               bgGradient="linear-gradient(90deg, rgba(26,32,44,1) 0%, rgba(74,85,104,1) 100%)"
               fontWeight="bold"
-              fontSize="5xl"
+              fontSize={["4xl", "4xl", "5xl"]}
             >
               cube.store,
             </Text>
@@ -74,6 +74,7 @@ export default function LandingPage() {
                 borderRadius={8}
                 bg="gray.800"
                 color="gray.50"
+                w=""
               >
                 <Box as="span" className={event.className} fontSize="2xl" />
                 <Text fontWeight="medium">{event.name}</Text>
