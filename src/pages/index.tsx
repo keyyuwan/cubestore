@@ -1,9 +1,14 @@
-import { Box, Button, Flex, Text, Icon, SimpleGrid } from "@chakra-ui/react"
+import { Box, Button, Flex, Text, SimpleGrid } from "@chakra-ui/react"
 import Head from "next/head"
+import Image from "next/image"
 import Router from "next/router"
-import { FaCubes, FaLongArrowAltRight } from "react-icons/fa"
-import { Container } from "../components/Container"
+import { FaLongArrowAltRight } from "react-icons/fa"
+
+import { Container as SectionContainer } from "../components/Container"
 import { EVENTS } from "../utils/events"
+
+import completeTaskImg from "../assets/Complete-task.svg"
+import successfulPurchaseImg from "../assets/Successful-purchase.svg"
 
 export default function LandingPage() {
   return (
@@ -12,14 +17,19 @@ export default function LandingPage() {
         <title>cube.store</title>
       </Head>
 
-      <Container mt="4rem" pb="2rem">
+      <SectionContainer h="80vh" display="flex" justifyContent="center">
         <Flex
           flexDir={["column", "column", "row"]}
           align="center"
           justify="center"
-          gap={[0, 0, "4rem", "10rem"]}
+          gap={[0, 0, "4rem", "8rem"]}
         >
-          <Icon as={FaCubes} w={[120, 160, 240]} h={[120, 160, 240]} />
+          <Image
+            src={completeTaskImg}
+            alt="People choosing products"
+            width="500px"
+            height="500px"
+          />
 
           <Box w={["100%", "100%", "400px"]} textAlign="center">
             <Text
@@ -49,15 +59,18 @@ export default function LandingPage() {
             </Button>
           </Box>
         </Flex>
+      </SectionContainer>
 
-        <Text mt="4rem" textAlign="center" fontWeight="bold" fontSize="xl">
+      <SectionContainer>
+        <Text textAlign="center" fontWeight="bold" fontSize="xl">
           From 2x2 to Megaminx
         </Text>
         <SimpleGrid
-          columns={[2, 2, 3]}
+          // columns={[2, 2, 3]}
           spacing="1rem"
           alignItems="center"
           justifyContent="center"
+          minChildWidth="160px"
         >
           {EVENTS.map((event) => {
             if (event.name === "All") {
@@ -74,7 +87,6 @@ export default function LandingPage() {
                 borderRadius={8}
                 bg="gray.800"
                 color="gray.50"
-                w=""
               >
                 <Box as="span" className={event.className} fontSize="2xl" />
                 <Text fontWeight="medium">{event.name}</Text>
@@ -82,7 +94,31 @@ export default function LandingPage() {
             )
           })}
         </SimpleGrid>
-      </Container>
+      </SectionContainer>
+
+      <SectionContainer mt="2rem" pb="2rem">
+        <Flex
+          flexDir={["column", "column", "row-reverse"]}
+          align="center"
+          justify="center"
+          gap={[0, 0, "4rem"]}
+        >
+          <Image
+            src={successfulPurchaseImg}
+            alt="Successful purchase"
+            width="500px"
+            height="500px"
+          />
+          <Text
+            textAlign="center"
+            fontWeight="bold"
+            fontSize={["xl", "2xl", "3xl"]}
+            maxW="500px"
+          >
+            {`You're`} just 1 click away from your new cube!
+          </Text>
+        </Flex>
+      </SectionContainer>
     </>
   )
 }
