@@ -4,8 +4,8 @@ cube.store is a Rubik's cube e-commerce developed with ReactJS and Next.js
 <br />
 
 ![Landing page](./.github/readme/capa.png)
-
-**I will add a GIF of the application soon**
+![Landing Page and Authentication GIF](./.github/readme/gifs/gif1.gif)
+![Cubes available and checkout session GIF](./.github/readme/gifs/gif2.gif)
 
 ## 💻 Project
 
@@ -38,6 +38,10 @@ When developing this project I expanded and improved my knowledge in:
 - Breadcrumbs navigation;
 - Not let the user make a purchase if not authenticated
 
+**Currently working on:**
+
+- Deploy
+
 ## 💙 Technologies
 
 #### 🚀 ReactJS
@@ -56,4 +60,18 @@ When developing this project I expanded and improved my knowledge in:
 
 #### 🚀 Axios
 
-**I will add how to run the application soon**
+## How to run
+
+```
+# Clone this repository
+$ git clone https://github.com/keyyuwan/cubestore
+
+# Go to the directory
+$ cd cubestore
+
+# Install Dependencies
+$ yarn or npm install
+
+# Run Web Server
+$ yarn dev or npm run dev
+```
