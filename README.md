@@ -71,6 +71,15 @@ $ cd cubestore
 # Install Dependencies
 $ yarn or npm install
 
+# Create a .env.local file in your project root directory adding the following:
+- Stripe keys:
+    - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+    - STRIPE_SECRET_KEY=
+
+- Google OAuth keys:
+    - GOOGLE_CLIENT_ID=
+    - GOOGLE_CLIENT_SECRET=
+
 # Run Web Server
 $ yarn dev or npm run dev
 ```
