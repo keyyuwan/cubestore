@@ -19,8 +19,7 @@ The Stripe API data is consumed using getStaticProps function, which makes dynam
 
 Chakra UI was used to develop the UI.
 
-**Knowledge** <br />
-When developing this project I expanded and improved my knowledge in:
+**When developing this project I expanded and improved my knowledge in:**
 
 - Static site generation;
 - Social authentication;
