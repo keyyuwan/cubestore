@@ -5,6 +5,8 @@ cube.store is a Rubik's cube e-commerce developed with ReactJS and Next.js
 
 ![Landing page](./.github/readme/capa.png)
 
+**I will add a GIF of the application soon**
+
 ## 💻 Project
 
 The project is a Rubik's cube e-commerce.
@@ -53,3 +55,5 @@ When developing this project I expanded and improved my knowledge in:
 #### 🚀 Stripe
 
 #### 🚀 Axios
+
+**I will add how to run the application soon**
