@@ -26,7 +26,7 @@ Chakra UI was used to develop the UI.
 - API Routes;
 - Declarative UI (Chakra UI);
 - Component separation;
-- Responsiveness
+- Mobile First
 
 ## ⚒️ Features
 
